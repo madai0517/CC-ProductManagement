@@ -1,0 +1,217 @@
+version: 2.0.0
+currentScenario: hello-world
+projectName: Claude-Code-Agent
+scenarios:
+  hello-world:
+    name: Hello World Demo
+    description: 基本的なマルチエージェント通信デモ
+    tmux_sessions:
+      president:
+        window_name: president
+        panes:
+          - role: president
+      multiagent:
+        window_name: multiagent-team
+        panes:
+          - role: boss1
+          - role: worker1
+          - role: worker2
+          - role: worker3
+    agents:
+      president:
+        role: 統括責任者
+        session: president
+        pane: 0
+      boss1:
+        role: チームリーダー
+        session: multiagent
+        pane: 0
+      worker1:
+        role: ワーカー1
+        session: multiagent
+        pane: 1
+      worker2:
+        role: ワーカー2
+        session: multiagent
+        pane: 2
+      worker3:
+        role: ワーカー3
+        session: multiagent
+        pane: 3
+  business-strategy:
+    name: Business Strategy Discussion
+    description: 事業戦略や経営方針を議論するシナリオ
+    tmux_sessions:
+      strategy:
+        window_name: strategy-team
+        panes:
+          - role: ceo
+          - role: cto
+          - role: cfo
+          - role: cmo
+      analysis:
+        window_name: analysis-team
+        panes:
+          - role: product_manager
+          - role: data_analyst
+    agents:
+      ceo:
+        role: 最高経営責任者
+        session: strategy
+        pane: 0
+      cto:
+        role: 最高技術責任者
+        session: strategy
+        pane: 1
+      cfo:
+        role: 最高財務責任者
+        session: strategy
+        pane: 2
+      cmo:
+        role: 最高マーケティング責任者
+        session: strategy
+        pane: 3
+      product_manager:
+        role: プロダクトマネージャー
+        session: analysis
+        pane: 0
+      data_analyst:
+        role: データアナリスト
+        session: analysis
+        pane: 1
+  collaborative-coding:
+    name: Collaborative Coding Session
+    description: ソフトウェア開発チームによる協働プログラミングシナリオ
+    tmux_sessions:
+      development:
+        window_name: dev-team
+        panes:
+          - role: cto
+          - role: tech_lead
+          - role: engineer1
+          - role: engineer2
+    agents:
+      cto:
+        role: CTO
+        session: development
+        pane: 0
+        responsibilities:
+          - 実装方針・設計の経営的レビュー
+          - 技術戦略の最終責任
+          - 技術投資判断
+          - エンジニアの目標設定
+          - チームパフォーマンス最大化
+          - 人材育成・評価
+      tech_lead:
+        role: テックリード
+        session: development
+        pane: 1
+        responsibilities:
+          - 技術プロジェクトリーダー
+          - 実装参加
+          - 技術的な意思決定
+          - メンタルマネジメント
+          - 日々のチームサポート
+          - 1on1実施
+      engineer1:
+        role: エンジニア1
+        session: development
+        pane: 2
+        responsibilities:
+          - プログラマとして実装
+          - コードレビュー
+          - 技術課題解決
+          - 単体テスト実装
+      engineer2:
+        role: エンジニア2
+        session: development
+        pane: 3
+        responsibilities:
+          - プログラマとして実装
+          - コードレビュー
+          - 技術課題解決
+          - 統合テスト実装
+  market-analysis:
+    name: Market Analysis Session
+    description: 市場調査と競合分析チーム - 包括的な市場動向分析から戦略提案まで
+    tmux_sessions:
+      market_analysis:
+        window_name: market-team
+        panes:
+          - role: market_researcher
+          - role: competitive_analyst
+          - role: consumer_insights
+          - role: trend_analyst
+          - role: business_analyst
+          - role: strategy_consultant
+    agents:
+      market_researcher:
+        role: マーケットリサーチャー
+        session: market_analysis
+        pane: 0
+      competitive_analyst:
+        role: 競合アナリスト
+        session: market_analysis
+        pane: 1
+      consumer_insights:
+        role: コンシューマーインサイト専門家
+        session: market_analysis
+        pane: 2
+      trend_analyst:
+        role: トレンドアナリスト
+        session: market_analysis
+        pane: 3
+      business_analyst:
+        role: ビジネスアナリスト
+        session: market_analysis
+        pane: 4
+      strategy_consultant:
+        role: 戦略コンサルタント
+        session: market_analysis
+        pane: 5
+  product-development:
+    name: Product Development Session
+    description: プロダクト開発チーム - アイデアから市場投入まで包括的な製品開発プロセス
+    tmux_sessions:
+      product_development:
+        window_name: product-team
+        panes:
+          - role: product_manager
+          - role: ux_designer
+          - role: product_marketing_manager
+          - role: system_architect
+          - role: lead_programmer
+    agents:
+      product_manager:
+        role: プロダクトマネージャー
+        session: product_development
+        pane: 0
+      ux_designer:
+        role: UXデザイナー
+        session: product_development
+        pane: 1
+      product_marketing_manager:
+        role: プロダクトマーケティングマネージャー
+        session: product_development
+        pane: 2
+      system_architect:
+        role: システムアーキテクト
+        session: product_development
+        pane: 3
+      lead_programmer:
+        role: リードプログラマー
+        session: product_development
+        pane: 4
+settings:
+  tmuxPrefix: C-b
+  autoStartClaude: true
+  logLevel: info
+  colorOutput: true
+  security:
+    allowTmuxKillSession: false
+    restrictedCommands:
+      - tmux kill-session
+      - tmux kill-server
+    confirmationRequired: true
+createdAt: '2025-06-18T05:58:16.924Z'
+lastUpdated: '2025-06-19T11:07:07.538Z'
